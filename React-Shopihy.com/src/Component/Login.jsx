@@ -1,57 +1,66 @@
 import React from "react";
 import { Link, Route, Redirect } from "react-router-dom";
+import axios from "axios"
 import "./Shop.css";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email:"",
+      username:"",
       password:""
       
       
     };
   }
-
+  
   handleClick =()=>{
     const{history} = this.props
     history.push("/signup")
   }
 
-  handleChange=(e)=>{
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+  handleChange = e => {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    };
   
-  handleInput=()=>{
+  
+  handleSubmit = () => {
+    // this.setState({ isLoading: true });
+    const {username, password} = this.state;
+    axios
+    .post("http://localhost:8080/auth/login", {
+      username,
+      password
+      })
+      .then(data => {
+        console.log(data);
+        
+        if(!data.data.error){
+  
+          alert("logged in");
+        }
+        // this.setState({
+        //     data: [...this.state.data, data.data],
+        //     isLoading: false
+        //   });
+      })
+      .catch(error => alert("please invalid user"));
+  };
 
-    const user  = "admin"
-    const pass = "admin"
-    const {email, password, } =  this.state
-
-    this.setState({
-      email:"",
-      password:""
-    })
-
-    if(user ===email && pass === password){
-        this.props.handleLogin()
-        this.props.history.push("/product")
-    }else{
-      alert("login info not correct")
-    }
-  }
 
 
-  render() {
 
+
+render() {
+  
     const {isLogin} =  this.props
-
+    
     if(isLogin){
       return <Redirect to="/product"/>
     }
-
+    
     return (
       <>
         <div style={{ backgroundColor: "white"}}>
@@ -95,23 +104,23 @@ class Login extends React.Component {
               >
                 Using Email
               </h5>
-              <input
-                className="d-block w-100 loginInput"
-                placeholder="Email"
-                required
-                value={this.state.email}
-                name="email"
-                onChange={this.handleChange}
+                <input
+                  className="d-block w-100 loginInput"
+                  placeholder="Username"
+                  required
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
                 />
-              <input
-                className="d-block w-100 loginInput"
-                placeholder="Password"
-                required
-                value={this.state.password}
-                name="password"
-                onChange={this.handleChange}
-              />
-              <button onClick={this.handleInput} className="loginButton">LOG IN</button>
+                <input
+                  className="d-block w-100 loginInput"
+                  placeholder="Password"
+                  required
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              <button onClick={this.handleSubmit} className="loginButton">LOG IN</button>
 
               {/* for pssword reset  */}
               <div className="mt-4" style={{ fontSize: 14 }}>

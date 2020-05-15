@@ -1,17 +1,58 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
 import "./Shop.css";
+import axios from "axios"
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name: "",
+      username: "",
+      password: "",
+      email: "",
+      mobile: "",
+      description: "user to visit shopping site"
+    };
   }
+    handleChange = e => {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    };
+    
+    
+    handleSubmit = () => {
+      // this.setState({ isLoading: true });
+      const { name, username, password, email, mobile, description } = this.state;
+      axios
+      .post("http://localhost:8080/auth/register", {
+        name,
+        email,
+        username,
+        password,
+        mobile,
+          description
+        })
+        .then(data => {
+          console.log(data);
+          
+          if(data.data.error){
+    
+            alert(data.data.message);
+          }else{
+            alert(data.data.message)
+          }
+          
+        })
+        .catch(error => alert("something went wrong try again"));
+    };
 
   handleClick=()=>{
     const{history}=this.props
     history.push("/login")
   }
+
+ 
 
   render() {
     return (
@@ -25,28 +66,28 @@ class Login extends React.Component {
                   color: "rgb(61, 60, 60",
                   marginTop: 20
                 }}
-              >
+                >
                 Sign Up
               </h2>
               <div
                 style={{ color: "#95948D ", margin:30 }}
-              >
+                >
                 Sign up to get access to exciting offers and promotions
               </div>
               <h5
                 className="text-left"
                 style={{ fontWeight: "bold", color: "black", marginTop: 10 }}
-              >
+                >
                 Continue With
               </h5>
 
               <div className="displayFormat">
                 <span className="loginOption">
-                  <i class="fab fa-google loginIcon" />
+                  <i className="fab fa-google loginIcon" />
                   Google
                 </span>
                 <span className="loginOption">
-                  <i class="fab fa-facebook-square loginIcon" />
+                  <i className="fab fa-facebook-square loginIcon" />
                   Facebook
                 </span>
               </div>
@@ -59,23 +100,43 @@ class Login extends React.Component {
                 className="d-block w-100 loginInput"
                 placeholder="Full Name"
                 required
-              />
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange}
+                />
               <input
                 className="d-block w-100 loginInput"
-                placeholder="Email Address"
+                placeholder="you@mail.com"
                 required
-              />
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+                />
+                <input
+                  className="d-block w-100 loginInput"
+                  placeholder="Username"
+                  required
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                  />
               <input
                 className="d-block w-100 loginInput"
                 placeholder="Password"
                 required
-              />
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                />
               <input
                 className="d-block w-100 loginInput"
                 placeholder="Mobile Number"
                 required
-              />
-              <button className="loginButton">SIGN UP</button>
+                name="mobile"
+                value={this.state.mobile}
+                onChange={this.handleChange}
+                />
+              <button onClick={this.handleSubmit} className="loginButton">SIGN UP</button>
 
               {/* for pssword reset  */}
               <div className="mt-4">
@@ -88,15 +149,9 @@ class Login extends React.Component {
               </div>
             </div>
           </div>
-          {/* <div className="container-fluid">
-            <div className="row">
-              <div></div>
-              <div></div>
-            </div>
-          </div> */}
         </div>
       </>
     );
   }
 }
-export default Login;
+export default Signup;

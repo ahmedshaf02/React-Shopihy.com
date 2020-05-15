@@ -32,7 +32,7 @@ class Login extends React.Component {
             <b className="d-block mb-2">CALL</b>
             <img
               width="100"
-              src="https://img.pngio.com/black-phone-icon-png-391496-free-icons-library-black-png-phone-256_256.jpg"
+              src="https://cdn.onlinewebfonts.com/svg/img_147186.png"
               alt="call"
             />
             <h6 className="mt-5"> +91-022-6000000</h6>

@@ -12,13 +12,13 @@ import ShopProduct from "./ShopProduct";
 import Error from "./Error";
 import Footer from "./Footer";
 import OrderPlace from "./OrderPlace";
-// import Offers from "./Offers"
+import {Provider} from "./Context"
 
 export default class RoutingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false,
+      isLogin: true,
       cartArr: [],
       length: "",
       history: "",
@@ -61,59 +61,62 @@ export default class RoutingPage extends React.Component {
 
     return (
       <>
-        <Navigation value={length} isLogin={isLogin} />
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={props => <Home {...props} isLogin={isLogin} />}
-          />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route
-            path="/login"
-            render={props => (
-              <Login
-                {...props}
-                isLogin={isLogin}
-                handleLogin={this.handleLogin}
-              />
-            )}
-          />
-          <Route path="/signup" render={props => <Signup {...props} />} />
-          <Route
-            path="/product"
-            render={props => (
-              <AllProduct
-                exact
-                {...props}
-                isLogin={isLogin}
-                addToCart={this.addToCart}
-                // removeCart={this.removeCart}
-              />
-            )}
-          />
-          {/* <Route
-                path="/product/:id"
-                render={(props) => <ShopProduct {...props} data={productArr} />}
-               
-              /> */}
-          <Route
-            path="/cart"
-            render={() => (
-              <Cart
-                data={this.state.cartArr}
-                addToOrder={this.addToOrder}
-                removeCartArr={this.removeCart}
-                history={this.state.history}
-              />
-            )}
-          />
-          <Route path="/orderPlace" render={() => <OrderPlace />} />
-          <Route render={() => <Error />} />
-        </Switch>
+        <Provider value={this.state.isLogin}>
 
-        <Footer />
+          <Navigation value={length} isLogin={isLogin} />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={props => <Home {...props} isLogin={isLogin} />}
+            />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route
+              path="/login"
+              render={props => (
+                <Login
+                  {...props}
+                  isLogin={isLogin}
+                  handleLogin={this.handleLogin}
+                />
+              )}
+            />
+            <Route path="/signup" render={props => <Signup {...props} />} />
+            <Route
+              path="/product"
+              render={props => (
+                <AllProduct
+                  exact
+                  {...props}
+                  isLogin={isLogin}
+                  addToCart={this.addToCart}
+                  // removeCart={this.removeCart}
+                />
+              )}
+            />
+            {/* <Route
+                  path="/product/:id"
+                  render={(props) => <ShopProduct {...props} data={productArr} />}
+                
+                /> */}
+            <Route
+              path="/cart"
+              render={() => (
+                <Cart
+                  data={this.state.cartArr}
+                  addToOrder={this.addToOrder}
+                  removeCartArr={this.removeCart}
+                  history={this.state.history}
+                />
+              )}
+            />
+            <Route path="/orderPlace" render={() => <OrderPlace />} />
+            <Route render={() => <Error />} />
+          </Switch>
+
+          <Footer />
+        </Provider>
       </>
     );
   }

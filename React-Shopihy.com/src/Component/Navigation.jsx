@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
 import "./Shop.css";
+import {Consumer} from "./Context"
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -10,11 +11,11 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <>
-        {/* <h1 style={{ backgroundColor: "rgba(241, 242, 209,0.7)", margin: 10 }}>
-          Home
-        </h1> */}
-        {/* <nav className="navbar navbar-expand-lg navbar-light " style={{backgroundColor:"#424242 "}}> */}
+      <Consumer>
+        {
+          context=>{
+            return(
+
         <nav
           className="navbar navbar-expand-lg navbar-light "
           style={{ backgroundColor: "#232F34 ", marginBottom: 10 }}
@@ -55,19 +56,22 @@ class Navigation extends React.Component {
               {/* <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
               <ul className="navbar-nav mr-auto ">
-                <Link to="/" className="nav-item active listStyle">Home</Link>
-                <Link to="/about" className="nav-item active listStyle">About</Link>
-                <Link to="/product" className="nav-item active listStyle">Shop Now</Link>
-                <Link to="/cart" className="nav-item active listStyle">
+                <Link to="/" className="nav-item  listStyle">Home</Link>
+                <Link to="/about" className="nav-item  listStyle">About</Link>
+                <Link to="/product" className="nav-item  listStyle">Shop Now</Link>
+                <Link to="/cart" className="nav-item  listStyle">
                   <i className="fas fa-shopping-cart" style={{ fontSize: 20 }} /><span style={{color:"#feda6a",marginLeft:2,fontWeight:"bold"}}>{this.props.value}</span>
                 </Link>
-                <Link to="/contact" className="nav-item active listStyle">Contact</Link>
-                <Link to="/login" className="nav-item active listStyle">{!this.props.isLogin ?"Login":"Logout"}</Link>
+                <Link to="/contact" className="nav-item  listStyle">Contact</Link>
+                <Link to="/login" className="nav-item  listStyle">{!context ?"Login":"Logout"}</Link>
               </ul>
             </form>
           </div>
         </nav>
-      </>
+            )
+          }
+        }
+      </Consumer>
     );
   }
 }
