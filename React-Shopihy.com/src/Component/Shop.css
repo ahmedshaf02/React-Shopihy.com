@@ -1,0 +1,253 @@
+/* header and navigation */
+.listStyle {
+  padding: 8px 16px;
+  color: white;
+  transition: font-size 0.5s, border 0.6s;
+}
+
+.listStyle:hover {
+  border: 2px solid white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 18px;
+  color: rgb(255, 215, 38);
+}
+.navbar ul {
+  color: white;
+  margin: 10px 0;
+}
+nav {
+  box-shadow: 4px 5px 6px rgba(32, 26, 26, 0.884);
+}
+
+/* for offer animation */
+.offer {
+  animation-name: move;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  transition: transform 1s;
+}
+@keyframes move {
+  0% {
+    left: 0px;
+    top: 0px;
+    border: 2px solid black;
+  }
+  25% {
+    left: 200px;
+    top: 0px;
+    border: 2px solid rgb(43, 246, 246);
+  }
+  50% {
+    left: 200px;
+    top: 200px;
+    border: 2px solid coral;
+    transform: rotate(6deg);
+  }
+  75% {
+    left: 0px;
+    top: 200px;
+    border: 2px solid dodgerblue;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+    border: 2px solid black;
+  }
+}
+
+/* .offerText{
+  
+    animation-name: move;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      transition: transform 1s;
+      position: relative
+    
+    }
+     @keyframes move{
+         0%{left: 0px; top:0px}
+         50%{left: 200px; top:0px}
+         100%{left: 0px; top: 0px;} 
+     } */
+
+/*    for choosing button            */
+
+.container1 {
+  background-color: #161748;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  border: 1px solid black;
+  border-top-left-radius: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* width: 100px; */
+}
+.main {
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  line-height: 200px;
+  background-color: #161748;
+  border-radius: 20px;
+  margin: 20px;
+  /* box-shadow: -4px -4px 12px rgb(255, 255, 255, 0.7),
+  4px 4px 12px rgb(0, 0, 0, 0.2); */
+  box-shadow: 7px 7px 18px #0c0d28, -7px -7px 18px #202168;
+}
+.main:hover {
+  /* box-shadow: inset -4px -4px 8px rgb(255, 255, 255, 0.8),
+  inset 4px 4px 12px rgb(0, 0, 0, 0.4); */
+  box-shadow: inset 7px 7px 23px #0c0d28, inset -7px -7px 23px #202168;
+}
+.main2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  background-color: #161748;
+  border-radius: 50%;
+  margin: 20px;
+  /* box-shadow: -4px -4px 12px rgb(255, 255, 255, 0.7),
+  4px 4px 12px rgb(0, 0, 0, 0.2); */
+  box-shadow: 7px 7px 23px #0c0d28, -7px -7px 23px #202168;
+}
+.main1 {
+  height: 200px;
+  width: 200px;
+  background-color: #161748;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 200px;
+  margin: 20px;
+  /* box-shadow: -4px -4px 12px rgb(255, 255, 255, 0.7),
+  4px 4px 12px rgb(0, 0, 0, 0.4); */
+  box-shadow: 7px 7px 18px #0e0f2f, -7px -7px 18px #1e1f61;
+}
+.main1:hover {
+  box-shadow: inset 7px 7px 22px #0d0e2a, inset -7px -7px 22px #1f2066;
+}
+.main2:after {
+  content: "For kids";
+  position: absolute;
+  height: 160px;
+  width: 160px;
+  text-align: center;
+  line-height: 160px;
+  background-color: #161748;
+  border-radius: 50%;
+  /* margin: 20px; */
+  /* box-shadow: inset -4px -4px 12px rgb(255, 255, 255, 0.7),
+    inset 4px 4px 12px rgb(0, 0, 0, 0.5); */
+  box-shadow: inset 7px 7px 23px #0c0d28, inset -7px -7px 23px #202168;
+}
+
+/* for login page and singup page */
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  margin-top: 30px;
+  width: 520px;
+  box-shadow: 0px 2px 10px 0px rgba(141, 138, 138, 0.75);
+  padding: 20px;
+  text-align: center;
+}
+.displayFormat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginOption {
+  width: 200px;
+  border: 0.6px solid rgb(240, 233, 233);
+  padding: 16px 20px;
+  border-radius: 4px;
+  margin: 10px;
+  cursor: pointer;
+}
+.loginInput {
+  width: 100%;
+  border: 0.8px solid rgb(211, 206, 206);
+  margin: 24px 0;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.loginButton {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 55%;
+  padding: 20px 0;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+}
+.loginIcon {
+  color: rgba(34, 142, 230, 0.829);
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.shopSize:hover {
+  background: black;
+  color: white
+}
+
+.cartButton {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 55%;
+  padding: 20px 0;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+}
+.cartButtonRemove {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 40%;
+  padding: 20px 0;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+}
+
+/* footer curve */
+.curveFooter{
+  background-color: #1d1e22;
+  color:#feda6a;
+  height: 50vh;
+  border-bottom-left-radius: 30% 50%;
+  border-bottom-right-radius: 30% 50%;
+  /* color: white; */
+  font-size: 20px;
+  text-align: center;
+  line-height: 50vh;
+  box-shadow: 2px 10px 12px rgba(129, 127, 127, 0.931);
+  
+}
+.trackOrderButton {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  width: 30%;
+  padding: 20px 0;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+}
