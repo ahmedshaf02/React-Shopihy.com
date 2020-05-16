@@ -13,7 +13,8 @@ class Navigation extends React.Component {
     return (
       <Consumer>
         {
-          context=>{
+          data=>{
+            const {isLogin, handleLogout} = data
             return(
 
         <nav
@@ -63,7 +64,7 @@ class Navigation extends React.Component {
                   <i className="fas fa-shopping-cart" style={{ fontSize: 20 }} /><span style={{color:"#feda6a",marginLeft:2,fontWeight:"bold"}}>{this.props.value}</span>
                 </Link>
                 <Link to="/contact" className="nav-item  listStyle">Contact</Link>
-                <Link to="/login" className="nav-item  listStyle">{!context ?"Login":"Logout"}</Link>
+                <Link onClick={()=>handleLogout()} to="/login" className="nav-item  listStyle">{!isLogin ?"Login":"Logout"}</Link>
               </ul>
             </form>
           </div>

@@ -18,7 +18,7 @@ export default class RoutingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: true,
+      isLogin: false,
       cartArr: [],
       length: "",
       history: "",
@@ -31,6 +31,13 @@ export default class RoutingPage extends React.Component {
       isLogin: true
     });
   };
+  handleLogout=()=>{
+    if(this.state.isLogin){
+      this.setState({
+        isLogin:false
+      })
+    }
+  }
 
   addToCart = (data, history) => {
     this.setState({
@@ -61,7 +68,7 @@ export default class RoutingPage extends React.Component {
 
     return (
       <>
-        <Provider value={this.state.isLogin}>
+        <Provider value={{...this.state,handleLogin:this.handleLogin,handleLogout:this.handleLogout, addToCart:this.addToCart, addToOrder:this.addToOrder,removeCartArr:this.removeCart}}>
 
           <Navigation value={length} isLogin={isLogin} />
           <Switch>
@@ -72,13 +79,14 @@ export default class RoutingPage extends React.Component {
             />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
+            
             <Route
               path="/login"
               render={props => (
                 <Login
                   {...props}
-                  isLogin={isLogin}
-                  handleLogin={this.handleLogin}
+                  // isLogin={isLogin}
+                  // handleLogin={this.handleLogin}
                 />
               )}
             />
@@ -105,8 +113,6 @@ export default class RoutingPage extends React.Component {
               render={() => (
                 <Cart
                   data={this.state.cartArr}
-                  addToOrder={this.addToOrder}
-                  removeCartArr={this.removeCart}
                   history={this.state.history}
                 />
               )}
