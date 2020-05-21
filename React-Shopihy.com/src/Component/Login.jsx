@@ -28,7 +28,6 @@ class Login extends React.Component {
   
   
   handleSubmit = (handleLogin) => {
-    // this.setState({ isLoading: true });
     const {username, password} = this.state;
 
     if(username==="" && password===""){

@@ -113,7 +113,7 @@ const Cart = props => {
                     <div className="text-center mt-2">
                       <button
                         onClick={() =>
-                          handleOrder(ele.id, addToOrder, removeCartArr)
+                          handleOrder(ele.id, addToOrder, removeCartArr, cartArr)
                         }
                         className="cartButtonRemove"
                       >
